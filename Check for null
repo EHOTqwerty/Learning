@@ -1,0 +1,35 @@
+using System;
+using System.Net;
+
+namespace Learning_NULL
+{
+	class MainClass
+	{
+		public class User
+		{
+			public Phone phone { get; set; }
+		}
+
+		public class Phone
+		{
+			public Company company { get; set; }
+		}
+
+		public class Company
+		{
+			public string name { get; set; }
+		}
+
+		public static void Main (string[] args)
+		{
+			User user = new User ();
+			user.phone = new Phone ();
+			string s = user?.phone?.company?.name ?? "Hellow";
+			user.phone.company = new Company ();
+			user.phone.company.name = "WWE";
+			string o = user?.phone?.company?.name ?? "Double hellow";
+			Console.WriteLine (s);
+			Console.WriteLine (o);
+		}
+	}
+}
