@@ -1,0 +1,68 @@
+using System;
+
+namespace Indeksators_1
+{
+	class MainClass
+	{
+		class User
+		{
+			string name;
+			string email;
+			string phone;
+			int age;
+			char sex;
+
+			public string this[string index]
+			{
+				get
+				{
+					switch (index)
+					{
+					case "name":
+						return name;
+					case "email":
+						return email;
+					case "phone":
+						return phone;
+					case "age":
+						return Convert.ToString (age);
+					case "sex": 
+						return Convert.ToString (sex);
+					default:
+						return null;
+					}
+				}
+				set
+				{
+					switch (index)
+					{
+					case "name":
+						name = value;
+						break;
+					case "email":
+						email = value;
+						break;
+					case "phone":
+						phone = value;
+						break;
+					case "age":
+						age = Convert.ToInt32 (value);
+						break;
+					case "sex": 
+						sex = Convert.ToChar (value);
+						break;
+					}
+				}
+			}
+		}
+
+		public static void Main (string[] args)
+		{
+			User user = new User ();
+			user ["name"] = Console.ReadLine ();
+			user ["age"] = "23";
+			Console.WriteLine (user ["age"]);
+			Console.WriteLine (user ["name"]);
+		}
+	}
+}
