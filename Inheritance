@@ -1,0 +1,51 @@
+using System;
+
+namespace Inheritance
+{
+	class MainClass
+	{
+		class Person
+		{
+			private string name;
+			public string Name
+			{
+				get { return name; }
+				set { this.name = value; }
+			}
+			public void ShowInfo()
+			{
+				Console.WriteLine (Name + " <person>");
+			}
+			public Person(string s)
+			{
+				Name = s;
+			}
+		}
+
+		sealed class Employee : Person
+		{
+			public string Company { get; set; }
+
+			public void ShowInfo()
+			{
+				Console.WriteLine (Name + " from " + Company + " <employee>");
+			}
+
+			public Employee(string n, string c) : base(n)
+			{
+				Company = c;
+			}
+		}
+
+		public static void Main (string[] args)
+		{
+			Person h = new Person ("Billy");
+			//h.Name = "Billy";
+			h.ShowInfo ();
+			h = new Employee ("Tom", "Farel's Comp");
+			h.ShowInfo ();
+			Employee e = new Employee ("Bob", "Bafese Inv");
+			e.ShowInfo ();
+		}
+	}
+}
