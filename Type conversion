@@ -1,0 +1,58 @@
+using System;
+
+namespace Type_conversion
+{
+	class MainClass
+	{
+		class Person
+		{
+			public string Name { get; set; }
+			public Person(string name)
+			{
+				Name = name;
+			}
+			public void Display()
+			{
+				Console.WriteLine ($"<person> {Name}");
+			}
+		}
+
+		class Employee : Person
+		{
+			public string Company { get; set; }
+			public Employee(string name, string company) : base(name)
+			{
+				Company = company;
+			}
+		}
+
+		class Client : Person
+		{
+			public string Bank { get; set; }
+			public Client(string name, string bank) : base(name)
+			{
+				Bank = bank;
+			}
+		}
+
+		public static void Main (string[] args)
+		{
+			//		Upcasting
+			Employee e1 = new Employee ("John", "Deads Man");
+			Person p1 = e1;
+
+			Console.WriteLine (p1.Name);
+			//Console.WriteLine (p.Company); // We can't do this, only to Person's members
+
+			Console.WriteLine (e1.Name);
+			Console.WriteLine (e1.Company);
+
+
+			//		Downcasting
+			Person p = new Person("Billy");
+			//Employee e = p;				//We can't do this without conversion
+			Employee e = p as Employee;
+			e.Display ();
+		}
+	}
+}
