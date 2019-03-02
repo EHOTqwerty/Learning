@@ -1,0 +1,47 @@
+using System;
+
+namespace Virtual_Classes
+{
+	class MainClass
+	{
+		class Person
+		{
+			public string FirstName { get; set; }
+			public string LastName { get; set; }
+			public Person(string firstName, string lastName)
+			{
+				FirstName = firstName;
+				LastName = lastName;
+			}
+			public virtual void Display()
+			{
+				Console.WriteLine($"{FirstName} {LastName}");
+			}
+		}
+
+		class Employee : Person
+		{
+			public string Company { get; set; }
+			public Employee(string firstName, string lastName, string company)
+				: base(firstName, lastName)
+			{
+				Company = company;
+			}
+
+			public override sealed void Display()
+			{
+				base.Display(); 
+				Console.WriteLine($"He works in {Company}");
+			}
+		}
+
+		public static void Main (string[] args)
+		{
+			Person p1 = new Person("Bill", "Gates");
+			p1.Display();
+
+			Employee p2 = new Employee("Tom", "Smith", "Microsoft");
+			p2.Display();
+		}
+	}
+}
