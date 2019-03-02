@@ -1,0 +1,55 @@
+using System;
+
+namespace Hiding
+{
+	class MainClass
+	{ 
+		class Person
+		{
+			public string FirstName { get; set; }
+			public string LastName { get; set; }
+			public Person(string fn, string ln)
+			{
+				FirstName = fn;
+				LastName = ln;
+			}
+			public void Display()
+			{
+				Console.WriteLine ($"{FirstName} {LastName}");
+			}
+		}
+
+		class Employee : Person
+		{
+			public new string FirstName
+			{
+				get
+				{ 
+					return base.FirstName + " <employee>";
+				}
+				set
+				{ 
+					FirstName = value;
+				}
+			}
+			public string Company { get; set; }
+			public Employee(string fn, string ln, string c) : base(fn, ln)
+			{
+				Company = c;
+			}
+			public new void Display()
+			{
+				Console.WriteLine ($"{FirstName} {LastName} works in {Company}");
+			}
+		}
+
+		public static void Main (string[] args)
+		{
+			Person p = new Person ("Bob", "Marley");
+			p.Display ();
+
+			Employee e = new Employee ("John", "Smith", "Microsoft");
+			e.Display ();
+		}
+	}
+}
