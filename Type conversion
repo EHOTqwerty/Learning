@@ -6,7 +6,18 @@ namespace Type_conversion
 	{
 		class Person
 		{
-			public string Name { get; set; }
+			string name;
+			public string Name 
+			{
+				get
+				{ 
+					return name;
+				}
+				set
+				{ 
+					name = value;
+				}
+			}
 			public Person(string name)
 			{
 				Name = name;
@@ -19,7 +30,18 @@ namespace Type_conversion
 
 		class Employee : Person
 		{
-			public string Company { get; set; }
+			public string company;
+			public string Company 
+			{ 
+				get
+				{ 
+					return company;
+				}
+				set
+				{ 
+					company = value;
+				}
+			}
 			public Employee(string name, string company) : base(name)
 			{
 				Company = company;
@@ -49,10 +71,11 @@ namespace Type_conversion
 
 
 			//		Downcasting
-			Person p = new Person("Billy");
+			Person p = new Employee("Bill", "Micr");
 			//Employee e = p;				//We can't do this without conversion
 			Employee e = p as Employee;
-			e.Display ();
+			e.Company = "Microsoftik";
+			e.Display();
 		}
 	}
 }
