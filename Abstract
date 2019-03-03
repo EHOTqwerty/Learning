@@ -1,0 +1,64 @@
+using System;
+
+
+//override : abstract
+
+
+namespace Abstract
+{
+	abstract class Person
+	{
+		public string Name { get; set; }
+		public Person(string n)
+		{
+			Name = n;
+		}
+		public void Display()
+		{
+			Console.WriteLine ($"<person> {Name}");
+		}
+	}
+
+	class Client : Person
+	{
+		public int sum { get; set; }
+		public Client(string n, int s) : base(n)
+		{
+			sum = s;
+		}
+		public new void Display()
+		{
+			base.Display ();
+			Console.WriteLine ($"He/She has a {sum} zł.");
+		}
+	}
+
+	class Employee : Person
+	{
+		public string position { get; set; }
+		public Employee(string n, string p) : base(n)
+		{
+			position = p;
+		}
+		public new void Display()
+		{
+			Console.WriteLine($"{Name} is a {position}.");
+		}
+	}
+
+	class MainClass
+	{
+		public static void Main ()
+		{
+			//Person p = new Person (); // Cannot create an instance of the abstract class or interface 'Abstract.Person'
+			Client c = new Client ("Bob", 999);
+			Employee e = new Employee ("John", "manager");
+			c.Display ();
+			e.Display ();
+			Person client = new Client("Tom", 500);
+			Person employee = new Employee ("Bob", "Операционист");
+			client.Display ();
+			employee.Display ();
+		}
+	}
+}
