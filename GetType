@@ -1,0 +1,37 @@
+using System;
+
+namespace GetType
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p = new Person ();
+			Employee e = new Employee ();
+			Person p1 = new Employee ();
+			//Employee e1 = new Person { Name = "a" } as Employee;			  // Didn't use this
+			Object o = new Person ();
+			Object o1 = new Employee ();
+			int i;
+			string s = "a";
+
+			Console.WriteLine ($"person = person      -  {p.GetType()}");
+			Console.WriteLine ($"employee = employee  -  {e.GetType()}");
+			Console.WriteLine ($"person = employee    -  {p1.GetType()}");
+			//Console.WriteLine ($"employee = person    -  {e1.GetType()}");  // We can't
+			Console.WriteLine ($"object = person      -  {o.GetType()}");
+			Console.WriteLine ($"object = employee    -  {o1.GetType()}");
+			Console.WriteLine ($"int                  -  {i.GetType()}");
+			Console.WriteLine ($"string               -  {s.GetType()}");
+		}
+
+		class Person
+		{
+			public string Name { get; set; }
+		}
+
+		class Employee : Person
+		{
+		}
+	}
+}
