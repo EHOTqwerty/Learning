@@ -1,0 +1,32 @@
+using System;
+
+namespace GetHashCode
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p = new Person { Name = "Tom" };
+			Employee e = new Employee { Name = "Bob" };
+
+			Console.WriteLine (p.GetHashCode());
+			Console.WriteLine (e.GetHashCode()); // Person override GetHashCode() is running
+			e.Name = "Tom";
+			Console.WriteLine (e.GetHashCode()); // Will change with changing Name
+		}
+
+		class Person
+		{
+			public string Name { get; set; }
+
+			public override int GetHashCode()
+			{
+				return Name.GetHashCode();
+			}
+		}
+
+		class Employee : Person
+		{
+		}
+	}
+}
