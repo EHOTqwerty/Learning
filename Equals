@@ -1,0 +1,31 @@
+using System;
+
+namespace Equals
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person person1 = new Person { name = "Tom" };
+			Person person2 = new Person { name = "Bob" };
+			Person person3 = new Person { name = "Tom" };
+			bool p1Ep2 = person1.Equals(person2);
+			bool p1Ep3 = person1.Equals(person3);
+			Console.WriteLine (p1Ep2);
+			Console.WriteLine (p1Ep3);
+		}
+
+		class Person
+		{
+			public string name { get; set; }
+
+			public override bool Equals(Object o)
+			{
+				if (o.GetType() != this.GetType())
+					return false;
+				Person p = o as Person;
+				return (p.name == this.name);
+			}
+		}
+	}
+}
