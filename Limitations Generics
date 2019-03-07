@@ -1,0 +1,78 @@
+using System;
+
+namespace Limitations_generics
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Account acc1 = new Account(1857) { sum = 4500 };
+			Account acc2 = new Account(3453) { sum = 5000 };
+			Transaction<Account> transaction1 = new Transaction<Account>
+			{
+				FromAccount = acc1,
+				ToAccount = acc2,
+				sum = 3900
+			};
+			transaction1.Execute();
+		}
+
+		class Account
+		{
+			public int id { get; private set;}
+			public int sum { get; set; }
+			public Account(int _id)
+			{
+				id = _id;
+			}
+		}
+
+		class Transaction<T> where T: Account		// Can do it with Account<int>
+		{
+			public T FromAccount { get; set; }
+			public T ToAccount { get; set; }
+			public int sum { get; set; }
+
+			public void Execute()
+			{
+				if (FromAccount.sum > sum)
+				{
+					FromAccount.sum -= sum;
+					ToAccount.sum += sum;
+					Console.WriteLine($"Счет {FromAccount.id}: {FromAccount.sum}$ \nСчет {ToAccount.id}: {ToAccount.sum}$");
+				}
+				else
+				{
+					Console.WriteLine($"Недостаточно денег на счете {FromAccount.id}");
+				}
+			}
+		}
+
+		interface IAccount
+		{
+			int CurrentSum { get; set;}
+		}
+
+		class Person
+		{
+			public string Name { get; set; }
+		}
+
+		class Transaction1<T> where T: Person, IAccount, new()
+		{
+
+		}
+
+		class Account1<T>
+		{
+			
+		}
+
+		class Transaction<U, V>
+			where U : Account1<int>
+			where V : struct
+		{
+
+		}
+	}
+}
