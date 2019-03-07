@@ -1,0 +1,70 @@
+using System;
+
+namespace Generics 
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Account<int> account1 = new Account<int> { sum = 5000 };
+			Account<string> account2 = new Account<string> { sum = 4000 };
+			account1.id = 2;
+			account2.id = "4356";
+			int id1 = account1.id;
+			string id2 = account2.id;
+			Console.WriteLine (id1);
+			Console.WriteLine (id2);
+			Console.WriteLine ($"Deffault <T> for int = {account1.hide_id}");
+
+			Account<int> acc = new Account<int> { sum = 5000 };
+			Account<int>.session = 5436;
+
+			Account<string> acc2 = new Account<string> { sum = 4000 };
+			Account<string>.session = "45245";
+
+			Console.WriteLine(Account<int>.session);
+			Console.WriteLine(Account<string>.session);
+
+			Transaction<Account<int>, string> transaction1 = new Transaction<Account<int>, string>
+			{
+				FromAccount = account1,
+				ToAccount = acc,
+				Code = "45478758",
+				Sum = 900
+			};
+
+
+			int x = 5, y = 15;
+			Console.WriteLine ($"x = {x}");
+			Console.WriteLine ($"y = {y}");
+			Swap (ref x, ref y);
+			Console.WriteLine ("Run a Swap() function.");
+			Console.WriteLine ($"x = {x}");
+			Console.WriteLine ($"y = {y}");
+		}
+
+		class Account<T>
+		{
+			internal static T session { get; set; }
+
+			public T id { get; set; }
+			public int sum { get; set; }
+			internal T hide_id { get; private set;} = default(T);
+		}
+
+		class Transaction<U, V>
+		{
+			public U FromAccount { get; set; }
+			public U ToAccount { get; set; }
+			public V Code { get; set; }
+			public int Sum { get; set; }
+		}
+
+		public static void Swap<T> (ref T x, ref T y)
+		{
+			T temp = x;
+			x = y;
+			y = temp;
+		}
+	}
+}
