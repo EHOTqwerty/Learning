@@ -1,0 +1,23 @@
+using System;
+
+namespace Exception_2
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			try
+			{
+				Console.Write ("5 / ");
+				int c = Convert.ToInt32(Console.ReadLine ());
+				int x = 5;
+				int y = x / c;
+				Console.WriteLine ($"Результат: {y}");
+			}
+			catch(DivideByZeroException ex)
+			{
+				Console.WriteLine($"Возникло исключение {ex.Message}");
+			}
+		}
+	}
+}
