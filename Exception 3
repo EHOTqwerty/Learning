@@ -1,0 +1,29 @@
+using System;
+
+namespace Exception_3
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Console.WriteLine ("First number");
+			int x = Convert.ToInt32(Console.ReadLine ());
+			Console.WriteLine ("Second number");
+			int y = Convert.ToInt32(Console.ReadLine ());
+			Console.WriteLine ($"{x} / {y}");
+
+			try
+			{
+				int result = x / y;
+			}
+			catch(DivideByZeroException) when (y == 0 && x == 0)
+			{
+				Console.WriteLine("y не должен быть равен 0");
+			}
+			catch(DivideByZeroException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+		}
+	}
+}
