@@ -1,0 +1,38 @@
+using System;
+
+namespace Interface
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Console.WriteLine ("Hello World!");
+			Person p = new Person ();
+			p.Move ();
+			Car c = new Car ();
+			c.Move ();
+
+		}
+
+		interface IMovable
+		{
+			void Move();
+		}
+
+		class Person : IMovable
+		{
+			public void Move()
+			{
+				Console.WriteLine ("Person moves");
+			}
+		}
+
+		struct Car : IMovable
+		{
+			public void Move()
+			{
+				Console.WriteLine ("Car rides");
+			}
+		}
+	}
+}
