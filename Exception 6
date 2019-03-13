@@ -1,0 +1,43 @@
+using System;
+
+namespace Exception_6
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			try
+			{
+				Person p = new Person { name = "Tom", age = 17 };
+				Console.WriteLine (p.name);
+			}
+			catch (PersonException ex)
+			{
+				Console.WriteLine("Ошибка: " + ex.Message);
+			}
+		}
+
+		class Person
+		{
+			public string name { get; set; }
+			public int age
+			{
+				get { return age; }
+				set
+				{
+					if (value < 18)
+						throw new PersonException("Лицам до 18 регистрация запрещена");
+					else
+						age = value;
+				}
+			}
+		}
+			
+		class PersonException : Exception
+		{
+			public PersonException(string message)
+				: base(message)
+			{ }
+		}
+	}
+}
