@@ -1,0 +1,37 @@
+using System;
+
+namespace Explicit_Interface_2
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			HeroAction action1 = new HeroAction ();
+			action1.Move ();
+			((IAction)action1).Move ();
+			IAction action2 = new HeroAction ();
+			action2.Move ();
+		}
+	}
+
+	interface IAction
+	{
+		void Move();
+	}
+
+	class BaseAction : IAction
+	{
+		public void Move()
+		{
+			Console.WriteLine("Move in BaseAction");
+		}
+	}
+
+	class HeroAction : BaseAction, IAction
+	{
+		void IAction.Move()
+		{
+			Console.WriteLine("Move in HeroAction");
+		}
+	}
+}
