@@ -1,0 +1,36 @@
+using System;
+
+namespace Object_Clone
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p1 = new Person { name = "Bob", age = 19 };
+			Person p2 = p1;
+			p2.name = "Alice";
+			Console.WriteLine (p1.name);
+
+			Person p3 = (Person)p1.Clone ();
+			p3.name = "John";
+			Console.WriteLine (p1.name);
+		}
+	}
+
+	interface ICloneable
+	{
+		object Clone();
+	}
+
+	class Person : ICloneable
+	{
+		public int age { get; set; }
+		public string name { get; set; }
+
+		public object Clone()
+		{
+			//return new Person { name = this.name, age = this.age };
+			return this.MemberwiseClone();  // Без ссылок
+		}
+	}
+}
