@@ -1,0 +1,29 @@
+using System;
+
+namespace Explicit_Interface
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			BaseAction action = new BaseAction ();
+			((IAction)action).Move ();
+
+			IAction action2 = new BaseAction ();
+			action2.Move ();
+		}
+	}
+
+	interface IAction
+	{
+		void Move();
+	}
+
+	class BaseAction : IAction
+	{
+		void IAction.Move()
+		{
+			Console.WriteLine("Move in Base Class");
+		}
+	}
+}
