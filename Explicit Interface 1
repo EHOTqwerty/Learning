@@ -1,0 +1,37 @@
+using System;
+
+namespace Explicit_Interface_1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p = new Person ();
+			((ISchool)p).Study ();
+			((IUniversity)p).Study ();
+		}
+	}
+
+	class Person : ISchool, IUniversity
+	{
+		void ISchool.Study()
+		{
+			Console.WriteLine("Учеба в школе");
+		}
+
+		void  IUniversity.Study()
+		{
+			Console.WriteLine("Учеба в университете");
+		}
+	}
+
+	interface ISchool
+	{
+		void Study();
+	}
+
+	interface IUniversity
+	{
+		void Study();
+	}
+}
