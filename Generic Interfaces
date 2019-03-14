@@ -1,0 +1,44 @@
+using System;
+
+namespace Generic_Interfaces
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			IUser<int> user1 = new User<int> (6789);
+			Console.WriteLine (user1.Id);
+
+			IUser<string> user2 = new User<string> ("12345");
+			Console.WriteLine (user2.Id);
+
+			IUser<int> user3 = new IntUser (4242);
+			Console.WriteLine (user3.Id);
+		}
+	}
+
+	interface IUser<T>
+	{
+		T Id { get; }
+	}
+
+	class User<T> : IUser<T>
+	{
+		T _id;
+		public User(T id)
+		{
+			_id = id;
+		}
+		public T Id { get { return _id; } }
+	}
+
+	class IntUser : IUser<int>
+	{
+		int _id;
+		public IntUser(int id)
+		{
+			_id = id;
+		}
+		public int Id { get { return _id; } }
+	}
+}
