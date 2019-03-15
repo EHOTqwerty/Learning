@@ -1,0 +1,18 @@
+using System;
+
+namespace IComparable
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			int[] a = new int[] { 98, 55, 26, 32, 45, 17, 68, 99, 5, 75, 78, 64 };
+			foreach (int i in a)
+				Console.Write ($"{i} ");
+			Console.WriteLine ();
+			Array.Sort (a);
+			foreach (int i in a)
+				Console.Write ($"{i} ");
+		}
+	}
+}
