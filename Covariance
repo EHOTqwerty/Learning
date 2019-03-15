@@ -1,0 +1,46 @@
+using System;
+
+namespace Covariance
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			IBank<DepositAccount> depositBank = new Bank<DepositAccount> ();
+			Account acc1 = depositBank.CreateAccount (54);
+			IBank<Account> ordinaryBank = new Bank<DepositAccount> ();
+			Account acc2 = ordinaryBank.CreateAccount (876);
+		}
+	}
+
+	interface IBank<out T>
+	{
+		T CreateAccount (int sum);
+	}
+
+	class Bank<T> : IBank<T> where T : Account, new()
+	{
+		public T CreateAccount (int sum)
+		{
+			T acc = new T ();
+			acc.DoTransfer (sum);
+			return acc;
+		}
+	}
+
+	class Account
+	{
+		public virtual void DoTransfer(int sum)
+		{
+			Console.WriteLine ($"Client put on account {sum} dollars");
+		}
+	}
+
+	class DepositAccount : Account
+	{
+		public override void DoTransfer(int sum)
+		{
+			Console.WriteLine ($"Client put on deposit account {sum} dollars");
+		}
+	}
+}
