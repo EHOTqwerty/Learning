@@ -1,0 +1,22 @@
+using System;
+
+namespace Delegate_2
+{
+	class MainClass
+	{
+		class Math
+		{
+			public int Sum (int a, int b) { return a + b; }
+		}
+
+		delegate int Action(int a, int b);
+
+		public static void Main (string[] args)
+		{
+			Math m = new Math ();
+			Action act;
+			act = m.Sum;
+			Console.WriteLine ($"21 + 32 = {act(21, 32)}");
+		}
+	}
+}
