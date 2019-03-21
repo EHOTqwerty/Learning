@@ -1,0 +1,17 @@
+using System;
+
+namespace Delegate_link
+{
+	class MainClass
+	{
+		delegate int Action(int a, int b);
+
+		public static void Main (string[] args)
+		{
+			Action act = new Action (Add);
+			Console.WriteLine ($"13 + 33 = {act(13, 33)}");
+		}
+
+		private static int Add(int x, int y){ return x + y; }
+	}
+}
