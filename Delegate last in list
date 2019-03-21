@@ -1,0 +1,21 @@
+using System;
+
+namespace Delegate_last_in_list
+{
+	class MainClass
+	{
+		delegate int Action (int x, int y);
+
+		public static void Main (string[] args)
+		{
+			Action a = new Action (Substract);
+			a += Multiply;
+			a += Add;
+			Console.WriteLine ($"23 and 22 = {a.Invoke (23, 22)}");
+		}
+
+		static private int Substract (int a, int b) { return a - b; }
+		static private int Add (int a, int b) { return a + b; }
+		static private int Multiply (int a, int b) { return a * b; }
+	}
+}
