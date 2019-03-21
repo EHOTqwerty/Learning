@@ -1,0 +1,35 @@
+using System;
+
+namespace Delegate_as_method_parameters
+{
+	class MainClass
+	{
+		delegate void Message();
+
+		public static void Main (string[] args)
+		{
+			Console.WriteLine ("Write something (maybe zero?).");
+
+			if (Console.ReadLine () == "0") {
+				Calling (Zero);
+			} else {
+				Calling (Any);
+			}
+		}
+
+		static private void Calling(Message m)
+		{
+			m.Invoke ();
+		}
+
+		private static void Zero ()
+		{
+			Console.WriteLine ("You write zero.");
+		}
+
+		static private void Any ()
+		{
+			Console.WriteLine ("You write something (not zero).");
+		}
+	}
+}
