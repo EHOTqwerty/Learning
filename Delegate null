@@ -1,0 +1,25 @@
+using System;
+
+namespace Delegate_null
+{
+	class MainClass
+	{
+		delegate void Action();
+
+		public static void Main (string[] args)
+		{
+			Action a = null;
+			a?.Invoke ();
+			Action b = Hi;
+			b -= Hi;
+			b?.Invoke ();
+			Action c = Hi;
+			c.Invoke ();
+		}
+
+		private static void Hi()
+		{
+			Console.WriteLine ("Hellow");
+		}
+	}
+}
