@@ -1,0 +1,20 @@
+using System;
+
+namespace Delegate_generalization
+{
+	class MainClass
+	{
+		delegate T Action<T, K> (K value);
+
+		public static void Main (string[] args)
+		{
+			Action<string, int> a = Square;
+			Console.WriteLine (a(4));
+		}
+
+		private static string Square (int x)
+		{
+			return Convert.ToString(x * x);
+		}
+	}
+}
