@@ -1,0 +1,33 @@
+using System;
+
+namespace Delegate_Invoke
+{
+	class MainClass
+	{
+		delegate int Action(int a = 5, int b = 7);
+
+		public static void Main (string[] args)
+		{
+			Action a, a1, a2;
+			a = Larger;
+			a1 = Larger;
+			a2 = Larger;
+			a.Invoke ();
+			a1.Invoke (45, 44);
+			a2.Invoke (2, 2);
+		}
+
+		static private int Larger (int x, int y)
+		{
+			if (x > y) {
+				Console.WriteLine ($"First number - {x} is larger than second number - {y}");
+				return 1;
+			} else if (x < y) {
+				Console.WriteLine ($"Second number - {y} is larger than first number - {x}");
+				return -1;
+			}
+			Console.WriteLine ($"That's two numbers {x}");
+			return 0;
+		}
+	}
+}
