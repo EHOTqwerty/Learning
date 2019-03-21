@@ -1,0 +1,32 @@
+using System;
+
+namespace Delegate_list
+{
+	class MainClass
+	{
+		delegate void Action();
+
+		public static void Main (string[] args)
+		{
+			Action a = new Action (Hi);
+			a += How;
+			a += Hi;
+			a -= How;
+			a ();
+
+			Console.WriteLine ();
+			Action a1 = a - Hi + How;
+			a1 ();
+		}
+
+		private static void Hi()
+		{
+			Console.WriteLine ("Hellow.");
+		}
+
+		private static void How()
+		{
+			Console.WriteLine ("How are you?");
+		}
+	}
+}
