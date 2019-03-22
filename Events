@@ -1,0 +1,64 @@
+using System;
+
+namespace Events
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Account acc = new Account(200);
+			acc.Added += ShowMessage;
+			acc.Withdrawn += ShowMessage;
+
+			acc.Withdraw(100);
+			acc.Withdrawn -= ShowMessage;
+
+			acc.Withdraw(50);
+			acc.Put(150);
+		}
+		private static void ShowMessage(string message)
+		{
+			Console.WriteLine (message);
+		}
+
+		class Account
+		{
+			public delegate void del(string message);
+			public event del Withdrawn;
+			public event del Added;
+
+			int sum;
+
+			public Account(int val)
+			{
+				sum = val;
+			}
+
+			public int CurrentSum
+			{
+				get { return sum; }
+			}
+
+			public void Put(int val)
+			{
+				sum += val;
+				if (Added != null)
+					Added($"На счет поступило {sum}");
+			}
+			public void Withdraw(int val)
+			{
+				if (val <= sum)
+				{
+					sum -= val;
+					if (Withdrawn != null)
+						Withdrawn($"Сумма {val} снята со счета");
+				}
+				else
+				{
+					if (Withdrawn != null)
+						Withdrawn("Недостаточно денег на счете");
+				}
+			}
+		}
+	}
+}
