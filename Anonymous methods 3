@@ -1,0 +1,18 @@
+using System;
+
+namespace Anonymous_methods_3
+{
+	class MainClass
+	{
+		delegate int Action(int x, int y);
+
+		public static void Main (string[] args)
+		{
+			int c = 7;
+			Action act = delegate (int a, int b) {
+				return a + b + c;
+			};
+			Console.WriteLine(act (3, 4));
+		}
+	}
+}
