@@ -1,0 +1,19 @@
+using System;
+
+namespace Anonymous_methods_1
+{
+	class MainClass
+	{
+		delegate void Action (string mess);
+
+		public static void Main (string[] args)
+		{
+			DoIt (delegate (string mess) { Console.WriteLine (mess);}, "Hello Wlad");
+		}
+
+		static void DoIt (Action del, string mess)
+		{
+			del (mess);
+		}
+	}
+}
