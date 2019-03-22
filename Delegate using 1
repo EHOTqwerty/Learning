@@ -1,0 +1,74 @@
+using System;
+
+namespace Delegate_using_1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Account acc = new Account (250);
+			acc.RegAdd (new Account.Message(ShowMessage));
+			acc.RegAdd (WithColor);
+			acc.Withdraw (150);
+			acc.RegDell (ShowMessage);
+			acc.Withdraw (150);
+		}
+
+		public static void ShowMessage(string mess)
+		{
+			Console.WriteLine (mess);
+		}
+
+		public static void WithColor(string mess)
+		{
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine (mess);
+			Console.ResetColor ();
+		}
+
+		public class Account
+		{
+			public delegate void Message(string message);
+
+			Message mess;
+
+			public void RegAdd(Message _m)
+			{
+				Delegate del = System.Delegate.Combine (mess, _m);
+				mess = del as Message;
+			}
+
+			public void RegDell(Message _m)
+			{
+				Delegate del = System.Delegate.Remove (mess, _m);
+				mess = del as Message;
+			}
+
+			int sum = 0;
+
+			public int CurrentSum { get { return sum; }}
+
+			public Account(int val)
+			{
+				sum = val;
+			}
+
+			public void Put(int val)
+			{
+				sum += val;
+			}
+
+			public void Withdraw(int val)
+			{
+				if (sum >= val) {
+					sum -= val;
+					if (mess != null)
+						mess ($"Summ {val} withdraw from this account");
+				} else {
+					if (mess != null)
+						mess ($"This account hasn't {val}");
+				}
+			}
+		}
+	}
+}
