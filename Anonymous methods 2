@@ -1,0 +1,17 @@
+using System;
+
+namespace Anonymous_methods_2
+{
+	class MainClass
+	{
+		delegate void Action (string message);
+
+		public static void Main (string[] args)
+		{
+			Action act = delegate {
+				Console.WriteLine ("Surprize");
+			};
+			act ("Nope");
+		}
+	}
+}
