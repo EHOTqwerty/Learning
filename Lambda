@@ -1,0 +1,15 @@
+using System;
+
+namespace Lambda
+{
+	class MainClass
+	{
+		delegate int Action(int a, int b);
+
+		public static void Main (string[] args)
+		{
+			Action a = (x, y) => x + y;
+			Console.WriteLine (a(3, 4));
+		}
+	}
+}
