@@ -1,0 +1,29 @@
+using System;
+
+namespace Lambda_as_parametres
+{
+	class MainClass
+	{
+		delegate bool Good(int x);
+
+		public static void Main (string[] args)
+		{
+			int[] i = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+			int a = Sum (i, x => x < 7);
+			Console.WriteLine (a);
+			int b = Sum (i, x => x % 2 == 1);
+			Console.WriteLine (b);
+		}
+
+		private static int Sum (int[] l, Good g)
+		{
+			int r = 0;
+			foreach (int i in l) {
+				if (g (i))
+					r += i;
+			}
+			return r;
+		}
+	}
+}
