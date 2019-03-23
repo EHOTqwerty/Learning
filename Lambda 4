@@ -1,0 +1,20 @@
+using System;
+
+namespace Lambda_4
+{
+	class MainClass
+	{
+		delegate void Action();
+
+		public static void Main (string[] args)
+		{
+			Action a = () => SayHi ();
+			a ();
+		}
+
+		static public void SayHi()
+		{
+			Console.WriteLine ("Hellow");
+		}
+	}
+}
