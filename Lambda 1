@@ -1,0 +1,17 @@
+using System;
+
+namespace Lambda_1
+{
+	class MainClass
+	{
+		delegate string Action(int i);
+
+		public static void Main (string[] args)
+		{
+			Action a = i => Convert.ToString(i * i);
+			Console.WriteLine (a (3));
+			string s = a (5);
+			Console.WriteLine (s);
+		}
+	}
+}
