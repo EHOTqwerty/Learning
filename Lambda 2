@@ -1,0 +1,15 @@
+using System;
+
+namespace Lambda_2
+{
+	class MainClass
+	{
+		delegate void Action();
+
+		public static void Main (string[] args)
+		{
+			Action a = () => Console.WriteLine ("Hellow");
+			a ();
+		}
+	}
+}
