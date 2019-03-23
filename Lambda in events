@@ -1,0 +1,61 @@
+using System;
+
+namespace Lambda_in_events
+{
+	class MainClass
+	{
+		delegate void Handler(object sender, EventHandler eh);
+
+		public static void Main (string[] args)
+		{
+			Account acc = new Account (100);
+			acc.Added += (sender, eh) => {
+				Console.WriteLine ($"Summ of the transaction - {eh.sum}");
+				Console.WriteLine (eh.message);
+			};
+			acc.Put (200);
+		}
+
+		class EventHandler
+		{
+			public string message { get; }
+			public int sum { get; }
+			public EventHandler(string message, int sum)
+			{
+				this.message = message;
+				this.sum = sum;
+			}
+		}
+
+		class Account
+		{
+			int sum;
+			public event Handler Added;
+			public event Handler Withdrawn;
+
+			public Account (int val)
+			{
+				sum = val;
+			}
+
+			public void Put (int val)
+			{
+				sum += val;
+				if (Added != null)
+					Added (this, new EventHandler($"{val} added to the account", val));
+			}
+
+			public void Withdraw (int val)
+			{
+				if (sum >= val) {	
+					sum -= val;
+					if (Withdrawn != null)
+						Withdrawn (this, new EventHandler ($"{val} withdrawn for the account", val)); 
+				} else {
+					if (Withdrawn != null)
+						Withdrawn (this, new EventHandler ("Not enough money on the account", 0));
+				}
+			}
+		}
+	}
+}
