@@ -1,0 +1,33 @@
+using System;
+
+namespace Delegate_generic_contravariance
+{
+	class MainClass
+	{
+		delegate void Action<in T> (T o);
+
+		public static void Main (string[] args)
+		{
+			Action <Person> info_person = PersonInfo;
+			Action <Client> info_client = info_person;
+
+			Client cl = new Client { name = "Valdemar" };
+			info_client (cl);
+		}
+
+		static void PersonInfo (Person p) => p.Display();
+
+		static void ClientInfo (Client c) => c.Display();
+
+		class Person
+		{
+			public string name;
+			public virtual void Display () => Console.WriteLine ($"Person {name}");
+		}
+
+		class Client : Person
+		{
+			public override void Display () => Console.WriteLine ($"Client {name}");
+		}
+	}
+}
