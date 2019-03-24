@@ -1,0 +1,32 @@
+using System;
+
+namespace Delegate_covariance
+{
+	class MainClass
+	{
+		delegate Person Action (string name);
+
+		public static void Main (string[] args)
+		{
+			Action act;
+			act = NewClient;
+			Person p = act.Invoke ("Bob");
+			Console.WriteLine (p.name);
+		}
+	
+		class Person
+		{
+			public string name { get; set; }
+		}
+
+		class Client : Person
+		{
+			
+		}
+
+		static private Client NewClient(string s)
+		{
+			return new Client { name = s };
+		}
+	}
+}
