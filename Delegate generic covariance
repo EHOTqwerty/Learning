@@ -1,0 +1,43 @@
+using System;
+
+namespace Delegate_generic_covariance
+{
+	class MainClass
+	{
+		delegate T Action <out T>(string s);
+
+		public static void Main (string[] args)
+		{
+			Action<Client> build_client = NewClient;
+			Action<Person> build_person = build_client;
+			Action<Person> build_person1 = NewClient;
+
+			Person p = build_person ("Johny");
+			p.Display ();
+
+			Person p1 = build_person1 ("Dawid");
+			p1.Display ();
+		}
+
+		static Person NewPerson (string s)
+		{
+			return new Person { name = s };
+		}
+
+		static Client NewClient (string s)
+		{
+			return new Client { name = s };
+		}
+
+		class Person
+		{
+			public string name;
+			public virtual void Display () => Console.WriteLine ($"Person {name}");
+		}
+
+		class Client : Person
+		{
+			public override void Display () => Console.WriteLine ($"Client {name}");
+		}
+	}
+}
