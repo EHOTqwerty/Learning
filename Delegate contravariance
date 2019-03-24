@@ -1,0 +1,32 @@
+using System;
+
+namespace Delegate_contravariance
+{
+	class MainClass
+	{
+		delegate void Action (Client cl);
+
+		public static void Main (string[] args)
+		{
+			Action act;
+			act = GetInfo;
+			Client cl = new Client { name = "Charley" };
+			act (cl);
+		}
+
+		class Person
+		{
+			public string name { get; set; }
+		}
+
+		class Client : Person
+		{
+			
+		}
+
+		static void GetInfo (Person p)
+		{
+			Console.WriteLine (p.name);
+		}
+	}
+}
