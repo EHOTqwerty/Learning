@@ -1,0 +1,29 @@
+using System;
+
+namespace Extension_methods
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			string s = "Hello World";
+			char c = 'o';
+			int i = s.WordCount(c);
+			Console.WriteLine(i);
+		}
+	}
+
+	public static class StringExtension
+	{
+		public static int WordCount(this string str, char c)
+		{
+			int counter = 0;
+			for (int i = 0; i<str.Length; i++)
+			{
+				if (str[i] == c)
+					counter++;
+			}
+			return counter;
+		}
+	} 
+}
