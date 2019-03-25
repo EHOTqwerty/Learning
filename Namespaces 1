@@ -1,0 +1,23 @@
+using System;
+using p = System.Console;
+using r = Namespaces_1.RandomClass;
+
+namespace Namespaces_1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			p.WriteLine ("Hello World!");
+			r.SayBy ();
+		}
+	}
+
+	class RandomClass
+	{
+		static public void SayBy()
+		{
+			Console.WriteLine ("Good Bye");
+		}
+	}
+}
