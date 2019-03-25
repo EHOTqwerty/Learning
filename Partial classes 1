@@ -1,0 +1,40 @@
+//      Program.cs
+using System;
+
+namespace Partial_classes_1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p = new Person();
+			p.DoSomething();
+		}
+	}
+}
+
+
+
+//      Addition
+public partial class Person
+{
+	partial void DoSomethingElse();
+
+	public void DoSomething()
+	{
+		System.Console.WriteLine("Start");
+		DoSomethingElse();
+		System.Console.WriteLine("Finish");
+	}
+}
+
+
+
+//      Addition1
+public partial class Person
+{
+	partial void DoSomethingElse()
+	{
+		System.Console.WriteLine("I am reading a book");
+	}
+}
