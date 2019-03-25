@@ -1,0 +1,13 @@
+using System;
+using static System.Console;
+
+namespace Namespaces_2
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			WriteLine ("What do you want?");
+		}
+	}
+}
