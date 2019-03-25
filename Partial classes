@@ -1,0 +1,38 @@
+//      Program.cs
+using System;
+
+namespace Partial_classes
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			Person p = new Person { name = "Bob" };
+			p.Live ();
+			p.Dead ();
+		}
+	}
+}
+
+
+
+//      Person.cs
+internal partial class Person
+{
+	public void Dead ()
+	{
+		System.Console.WriteLine ($"{name} is dead");
+	}
+}
+
+
+
+//      Dead.cs
+internal partial class Person
+{
+	public string name { get; set; }
+	public void Live ()
+	{
+		System.Console.WriteLine ($"{name} is live");
+	}
+}
