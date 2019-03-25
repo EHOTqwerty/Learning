@@ -1,0 +1,26 @@
+using System;
+using Namespaces.NewSpace;
+
+namespace Namespaces
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			DoIt di = new DoIt { name = "Tom" };
+			di.SayName ();
+		}
+	}
+		
+	namespace NewSpace
+	{
+		class DoIt
+		{
+			public string name { get; set; }
+			public void SayName()
+			{
+				Console.WriteLine (name);
+			}
+		}
+	}
+}
