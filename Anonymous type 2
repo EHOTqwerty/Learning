@@ -1,0 +1,20 @@
+using System;
+
+namespace Anonymous_type_2
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			var people = new[] {
+				new { name = "Tom"},
+				new { name = "Bob"},
+				new { name = "John" }
+			};
+
+			foreach (var h in people) {
+				Console.WriteLine (h.name);
+			}
+		}
+	}
+}
