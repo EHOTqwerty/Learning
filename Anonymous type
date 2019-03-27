@@ -1,0 +1,18 @@
+using System;
+
+namespace Anonymous_type
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			var user = new { name = "Tom", age = 23 };
+			var gentleman = new { name = "Bob", age = 45 };
+			var car = new { model = "VAZ", year = 1997 };
+
+			Console.WriteLine (user.GetType ());
+			Console.WriteLine (gentleman.GetType ());
+			Console.WriteLine (car.GetType ());
+		}
+	}
+}
