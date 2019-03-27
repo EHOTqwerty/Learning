@@ -1,0 +1,21 @@
+using System;
+
+namespace Anonymous_type_1
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			User u = new User { name = "Bob" };
+			int age = 22;
+			var human = new { u.name, age }; // == { name = u.name, age = age };
+			Console.WriteLine (human.name);
+			Console.WriteLine (human.age);
+		}
+	}
+
+	class User
+	{
+		public string name { get; set; }
+	}
+}
