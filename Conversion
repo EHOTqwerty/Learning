@@ -1,0 +1,67 @@
+using System;
+
+namespace Conversion
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			
+		}
+
+		static void UseEmployee1(Employee e)
+		{
+			Manager m = e as Manager;
+			if (m != null && m.IsOnVacation == false) {
+				m.Work ();
+			} else {
+				Console.WriteLine ("Conversion failed");
+			}
+		}
+
+		static void UseEmployee2(Employee e)
+		{
+			try
+			{
+				Manager m = (Manager)e;
+				if (!m.IsOnVacation){
+					m.Work();
+				}
+			}
+			catch (InvalidCastException ex)
+			{
+				Console.WriteLine (ex.Message);
+			}
+		}
+
+		static void UseEmployee3(Employee e)
+		{
+			if (e is Manager) {
+				Manager m = e as Manager;
+				if (!m.IsOnVacation) {
+					m.Work ();
+				}
+			} else {
+				Console.WriteLine ("Conversion not allowed");
+			}
+		}
+	}
+
+	class Employee
+	{
+		public virtual void Work()
+		{
+			Console.WriteLine ("I'm  working, working!");
+		}
+	}
+
+	class Manager : Employee
+	{
+		public override void Work()
+		{
+			Console.WriteLine ("Well work, work on");
+		}
+
+		public bool IsOnVacation { get; set; } = false;
+	}
+}
