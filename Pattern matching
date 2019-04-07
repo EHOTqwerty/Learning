@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Pattern_matching
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Manager();
+            UseEmployee(emp);
+
+            Console.Read();
+        }
+
+        static void UseEmployee(Employee emp)
+        {
+            if (emp is Manager manager && manager.IsOnVacation == false)
+            {
+                manager.Work();
+            }
+            else
+            {
+                Console.WriteLine("Conversion not allowed");
+            }
+        }
+    }
+
+    class Employee
+    {
+        public virtual void Work()
+        {
+            Console.WriteLine("I'm working, go away");
+        }
+    }
+
+    class Manager : Employee
+    {
+        public override void Work()
+        {
+            Console.WriteLine("Good work, work on");
+        }
+        public bool IsOnVacation { get; set; }
+    }
+}
