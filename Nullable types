@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Nullable_types
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int? z = null;
+            bool? f = null;
+            Nullable<int> z1 = 4;
+            Nullable<bool> f1 = null;
+
+            Console.WriteLine(z1.Value);
+            Console.WriteLine(z1.HasValue);
+
+            Nullable<State> s = new State { name = "Narnia" };
+            Console.WriteLine(s.Value.name);
+
+            Console.WriteLine(z.HasValue ? Convert.ToString(z.Value) : "null");
+            Console.WriteLine(z1.HasValue ? Convert.ToString(z1.Value) : "null");
+
+            Console.ReadKey();
+        }
+    }
+
+   struct State
+    {
+        public string name { get; set; }
+    }
+}
