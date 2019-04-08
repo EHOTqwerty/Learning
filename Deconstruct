@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Deconstruct
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person p = new Person { name = "Bob", age = 22 };
+            (int age, string name) = p;
+            Console.WriteLine($"{name} is {age} years old");
+            Console.Read();
+        }
+    }
+
+    class Person
+    {
+        public int age;
+        public string name;
+
+        public void Deconstruct(out int age, out string name)
+        {
+            age = this.age;
+            name = this.name;
+        }
+    }
+}
