@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Local_variable_reference
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int x = 23;
+            ref int xRef = ref x;
+            Console.WriteLine(xRef);
+            x = 223;
+            Console.WriteLine(xRef);
+            xRef = 124;
+            Console.WriteLine(x);
+
+            int y = 1;
+            ref int yRef = ref y;
+            xRef = yRef;
+            Console.WriteLine(x);
+            x = 3;
+            Console.WriteLine(x);
+            y = 2;
+            Console.WriteLine(x);
+
+            Console.ReadKey();
+        }
+    }
+}
