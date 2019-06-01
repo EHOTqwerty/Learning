@@ -1,0 +1,7 @@
+D:\GitHub\Learning\Collections\bin\Debug\Collections.exe.config
+D:\GitHub\Learning\Collections\bin\Debug\Collections.exe
+D:\GitHub\Learning\Collections\bin\Debug\Collections.pdb
+D:\GitHub\Learning\Collections\obj\Debug\Collections.csprojAssemblyReference.cache
+D:\GitHub\Learning\Collections\obj\Debug\Collections.csproj.CoreCompileInputs.cache
+D:\GitHub\Learning\Collections\obj\Debug\Collections.exe
+D:\GitHub\Learning\Collections\obj\Debug\Collections.pdb
