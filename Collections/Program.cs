@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,10 @@ namespace Collections
 
             objectList.Add(obj);
             objectList.Add("bye");
+            ListPrint(objectList);
+
+            objectList.RemoveAt(0);
+            objectList.RemoveAt(0);
             ListPrint(objectList);
 
             Console.ReadKey();
